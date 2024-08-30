@@ -58,6 +58,28 @@ body {
     background-image: linear-gradient(to bottom left, #0D40F2, #2173EE);
 }
 
+.side-card-ring1 {
+    display: flex;
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    transform: translate(70px, 70px);
+    transform-style: preserve-3d;
+    border-radius: 100px;
+    border: 1px solid gray;
+}
+
+.side-card-ring2 {
+    display: flex;
+    position: absolute;
+    width: 325px;
+    height: 325px;
+    transform: translate(-15px, -15px);
+    transform-style: preserve-3d;
+    border-radius: 200px;
+    border: 1px solid gray;
+}
+
 .start-button {
     position: absolute;
     margin: auto;
