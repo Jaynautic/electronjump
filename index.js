@@ -1,24 +1,31 @@
 var mainGame = document.getElementById('mainGame');
-var newPosY1 = -140;
-var newPosY2 = 140;
+var atomContainer = document.getElementById('atomContainer');
+var thisScore;
+var newPosY1 = -180;
+var newPosY2 = 180;
+var newPosY3 = 540;
+var newPosY4 = -540;
 
-let posY = [newPosY1, newPosY2];
+let posY = [newPosY1, newPosY2, newPosY3, newPosY4];
+
+let mainPosY = 0;
+let currentScore = 0;
 
 
-let ranNum1 = 1;
-let ranNum2 = 2;
-createNewAtom(ranNum1);
-createNewAtom(ranNum2);
+createNewAtom(1);
+createNewAtom(2);
+createNewAtom(3);
+createNewAtom(4);
 
-window.addEventListener("click", () => {
 
-    for (let i = 0; i < 2; i++) {
-        let posX = (-1)**(i+1) * 120;
-        posY[i] = posY[i] + 350;
-        let atom1 = document.getElementById(`atom${i+1}`);
-        atom1.style.transform = `translate(${posX}px, ${posY[i]}px)`;
-        console.log(atom1)
-    }
+mainGame.addEventListener("click", () => {
+
+    mainPosY = mainPosY + 350;
+    atomContainer.style.transform = `translate(0px, ${mainPosY}px)`;
+
+    currentScore++;
+
+    thisScore.innerHTML = `${currentScore}`;
 
 });
 
@@ -29,15 +36,15 @@ function createNewAtom(atomPosition) {
 
     // Creates New Atom
         var newAtom = document.createElement('div');
-        newAtom.setAttribute('class', 'atom-container');
+        newAtom.setAttribute('class', 'atom');
         newAtom.setAttribute('id', `atom${atomNum}`);
 
         let oneAtomX = (120)*(-1)**(+atomPosition);
-        let oneAtomY = (140)*(-1)**(+atomPosition);
+        let oneAtomY = (posY[atomPosition - 1]);
 
         newAtom.style.transform = `translate(${oneAtomX}px, ${oneAtomY}px)`;
 
-        mainGame.appendChild(newAtom);
+        atomContainer.appendChild(newAtom);
 
         let thisAtom = document.getElementById(`atom${atomNum}`);
 
@@ -81,7 +88,7 @@ function createNewAtom(atomPosition) {
     for (let i = 0; i < numOfElectrons; i++) {
 
         var newElectron = document.createElement('div');
-        newElectron.setAttribute('class', 'valence-shell-inner');
+        newElectron.setAttribute('class', `electron color${atomNum}`);
 
         let oneElectronX = 160*Math.cos((i)*(360/(numOfElectrons))*0.0174533) + 135;
         let oneElectronY = 160*Math.sin((i)*(360/(numOfElectrons))*0.0174533) + 135;
@@ -97,7 +104,7 @@ function createNewAtom(atomPosition) {
     for (let i = 0; i < numOfNucleus; i++) {
 
         var newElectron = document.createElement('div');
-        newElectron.setAttribute('class', 'nucleus-inner');
+        newElectron.setAttribute('class', `nucleus-inner color${atomNum}`);
 
         let oneElectronX = 20*Math.cos((i-1)*(360/numOfNucleus)*0.0174533) + 135;
         let oneElectronY = 20*Math.sin((i-1)*(360/numOfNucleus)*0.0174533) + 135;
@@ -111,7 +118,7 @@ function createNewAtom(atomPosition) {
         let id = null;
         let pos = 0;
 
-        id = setInterval(frame, 10);
+        id = setInterval(frame, 15);
 
         function frame() {
             pos++;
@@ -119,4 +126,32 @@ function createNewAtom(atomPosition) {
             thisNucleus.style.transform = `rotate(${pos/2}deg)`;
         };
 
+    // Create Blur Container
+    var newBlurContainer = document.createElement('div');
+    newBlurContainer.setAttribute('id', 'blurContainer');
+
+    mainGame.appendChild(newBlurContainer);
+
+    let thisBlurContainer = document.getElementById('blurContainer');
+
+    // Creates Blur Filter
+    var newBlurFilter = document.createElement('div');
+    newBlurFilter.setAttribute('class', 'blur-filter');
+
+    thisBlurContainer.appendChild(newBlurFilter);
+
+    // Creates Blur Filter 2
+    var newBlurFilter2 = document.createElement('div');
+    newBlurFilter2.setAttribute('class', 'blur-filter-2');
+
+    thisBlurContainer.appendChild(newBlurFilter2);
+
+    // Creates Score
+    var newScore = document.createElement('div');
+    newScore.setAttribute('id', 'score');
+
+    mainGame.appendChild(newScore);
+
+    thisScore = document.getElementById('score');
+    thisScore.innerHTML = `${currentScore}`;
 };
