@@ -5,23 +5,28 @@
     font-family: 'Inter', sans-serif;
 }
 
+html {
+    height: 100%;
+}
+
 body {
     margin: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     overflow: hidden;
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 40px;
+    justify-content: center; */
     background-color: #1F1F1F;
 }
 
 .main-game {
     margin: 0;
+    /* width: 430px; */
+    /* height: 932px; */
     width: 100vw;
-    height: 932px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -43,8 +48,8 @@ body {
     align-items: center;
     gap: 0px;
     border-radius: 15px;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
+    /* transition: transform 0.8s;
+    transform-style: preserve-3d; */
 }
 
 .valence-shell {
@@ -76,19 +81,27 @@ body {
 }
 
 .color1 {
-    background-image: linear-gradient(to bottom left, #0D40F2, #9421EE);
+    background-image: linear-gradient(to bottom left, #F26D0D, #EE2139);
 }
 
 .color2 {
-    background-image: linear-gradient(to bottom left, #0DF240, #21A4EE);
+    background-image: linear-gradient(to bottom left, #0D40F2, #9421EE);
 }
 
 .color3 {
-    background-image: linear-gradient(to bottom left, #F26D0D, #EE2139);
+    background-image: linear-gradient(to bottom left, #0DF240, #21A4EE);
 }
 
 .color4 {
     background-image: linear-gradient(to bottom left, #F26D0D, #EE2139);
+}
+
+.color5 {
+    background-image: linear-gradient(to bottom left, #0DF240, #21A4EE);
+}
+
+.color6 {
+    background-image: linear-gradient(to bottom left, #0DF240, #21A4EE);
 }
 
 .nucleus-inner {
