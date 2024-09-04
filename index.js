@@ -18,16 +18,17 @@ createNewAtom(3);
 createNewAtom(4);
 
 
-mainGame.addEventListener("click", () => {
+mainGame.addEventListener("click", tapScreen);
+mainGame.addEventListener("touchend", tapScreen);
 
+function tapScreen() {
     mainPosY = mainPosY + 350;
     atomContainer.style.transform = `translate(0px, ${mainPosY}px)`;
 
     currentScore++;
 
     thisScore.innerHTML = `${currentScore}`;
-
-});
+};
 
 
 function createNewAtom(atomPosition) {
