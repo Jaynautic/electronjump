@@ -1,33 +1,55 @@
 var mainGame = document.getElementById('mainGame');
 var atomContainer = document.getElementById('atomContainer');
 var thisScore;
-var newPosY1 = -180;
+var newPosY1 = 540;
 var newPosY2 = 180;
-var newPosY3 = 540;
+var newPosY3 = -180;
 var newPosY4 = -540;
+var newPosY5 = -880;
+var newPosY6 = -1220;
 
-let posY = [newPosY1, newPosY2, newPosY3, newPosY4];
+let posY = [newPosY1, newPosY2, newPosY3, newPosY4, newPosY5, newPosY6];
 
 let mainPosY = 0;
 let currentScore = 0;
+let specificAtom = -1;
 
 
 createNewAtom(1);
 createNewAtom(2);
 createNewAtom(3);
 createNewAtom(4);
+createNewAtom(5);
+createNewAtom(6);
 
 
 mainGame.addEventListener("click", tapScreen);
 mainGame.addEventListener("touchend", tapScreen);
 
 function tapScreen() {
-    mainPosY = mainPosY + 350;
+
+    mainPosY = mainPosY + 345;
     atomContainer.style.transform = `translate(0px, ${mainPosY}px)`;
 
     currentScore++;
 
     thisScore.innerHTML = `${currentScore}`;
+
+    if (specificAtom == 6) {
+        specificAtom = 1;
+    } else if (specificAtom == -1) {
+        specificAtom++;
+        return;
+    } else {
+        specificAtom++;
+    }
+
+    let movingAtom = document.getElementById(`atom${specificAtom}`);
+    let movingAtomX = (120)*(-1)**(+specificAtom);
+    let movingAtomY = newPosY5;
+    movingAtom.style.transform = `translate(${movingAtomX}px, ${movingAtomY - mainPosY}px)`;
+
+    console.log(specificAtom)
 };
 
 
@@ -127,25 +149,25 @@ function createNewAtom(atomPosition) {
             thisNucleus.style.transform = `rotate(${pos/2}deg)`;
         };
 
-    // Create Blur Container
-    var newBlurContainer = document.createElement('div');
-    newBlurContainer.setAttribute('id', 'blurContainer');
+    // // Create Blur Container
+    // var newBlurContainer = document.createElement('div');
+    // newBlurContainer.setAttribute('id', 'blurContainer');
 
-    mainGame.appendChild(newBlurContainer);
+    // mainGame.appendChild(newBlurContainer);
 
-    let thisBlurContainer = document.getElementById('blurContainer');
+    // let thisBlurContainer = document.getElementById('blurContainer');
 
-    // Creates Blur Filter
-    var newBlurFilter = document.createElement('div');
-    newBlurFilter.setAttribute('class', 'blur-filter');
+    // // Creates Blur Filter
+    // var newBlurFilter = document.createElement('div');
+    // newBlurFilter.setAttribute('class', 'blur-filter');
 
-    thisBlurContainer.appendChild(newBlurFilter);
+    // thisBlurContainer.appendChild(newBlurFilter);
 
-    // Creates Blur Filter 2
-    var newBlurFilter2 = document.createElement('div');
-    newBlurFilter2.setAttribute('class', 'blur-filter-2');
+    // // Creates Blur Filter 2
+    // var newBlurFilter2 = document.createElement('div');
+    // newBlurFilter2.setAttribute('class', 'blur-filter-2');
 
-    thisBlurContainer.appendChild(newBlurFilter2);
+    // thisBlurContainer.appendChild(newBlurFilter2);
 
     // Creates Score
     var newScore = document.createElement('div');
