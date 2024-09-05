@@ -1,5 +1,6 @@
 var mainGame = document.getElementById('mainGame');
 var atomContainer = document.getElementById('atomContainer');
+var scoreContainer = document.getElementById('scoreContainer');
 var thisScore;
 var newPosY1 = 540;
 var newPosY2 = 180;
@@ -21,6 +22,15 @@ createNewAtom(3);
 createNewAtom(4);
 createNewAtom(5);
 createNewAtom(6);
+
+// Creates Score
+    var newScore = document.createElement('div');
+    newScore.setAttribute('id', 'score');
+
+    scoreContainer.appendChild(newScore);
+
+    thisScore = document.getElementById('score');
+    thisScore.innerHTML = `${currentScore}`;
 
 
 mainGame.addEventListener("click", tapScreen);
@@ -170,11 +180,11 @@ function createNewAtom(atomPosition) {
     // thisBlurContainer.appendChild(newBlurFilter2);
 
     // Creates Score
-    var newScore = document.createElement('div');
-    newScore.setAttribute('id', 'score');
+    // var newScore = document.createElement('div');
+    // newScore.setAttribute('id', 'score');
 
-    mainGame.appendChild(newScore);
+    // scoreContainer.appendChild(newScore);
 
-    thisScore = document.getElementById('score');
-    thisScore.innerHTML = `${currentScore}`;
+    // thisScore = document.getElementById('score');
+    // thisScore.innerHTML = `${currentScore}`;
 };
